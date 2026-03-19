@@ -43,5 +43,5 @@ tasks.register('runWorker', JavaExec) {
     group = 'application'
     description = 'Run the Temporal worker'
     classpath = sourceSets.main.runtimeClasspath
-    mainClass = 'helloworkflow.SayHelloWorker'
+    mainClass = 'helloworkflow.workers.SayHelloWorker'
 }
