@@ -8,6 +8,9 @@ import io.temporal.worker.WorkerFactory;
 import helloworkflow.workflows.implementations.SayHelloWorkflowImpl;
 import helloworkflow.actitivies.implementations.GreetActivitiesImpl;
 
+/**
+ * Worker to execute the say hello workflow.
+ */
 public class SayHelloWorker {
     public static void main(String[] args) {
       WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
