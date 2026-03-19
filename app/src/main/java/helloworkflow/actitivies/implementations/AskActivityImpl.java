@@ -2,6 +2,7 @@ package helloworkflow.actitivies.implementations;
 
 import helloworkflow.actitivies.interfaces.AskActivity;
 import helloworkflow.faker.Faker;
+import io.temporal.failure.ApplicationFailure;
 import io.temporal.activity.Activity;
 import io.temporal.activity.ActivityExecutionContext;
 import io.temporal.activity.ActivityInfo;
@@ -24,8 +25,8 @@ public class AskActivityImpl implements AskActivity {
       log.info("activityId=" + info.getActivityId());
       log.info("activityTimeout=" + info.getStartToCloseTimeout());
 
-      if(Faker.chance(0.75)) {
-        throw new RuntimeException("Failed to ask");
+      if (Faker.chance(0.75)) {
+        throw ApplicationFailure.newFailure("Failed to ask", RuntimeException.class.getName());
       }
       
       return "Danny";
