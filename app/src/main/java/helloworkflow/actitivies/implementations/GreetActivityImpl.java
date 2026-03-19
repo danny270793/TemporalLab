@@ -2,6 +2,7 @@ package helloworkflow.actitivies.implementations;
 
 import helloworkflow.actitivies.interfaces.GreetActivity;
 import helloworkflow.faker.Faker;
+import io.temporal.failure.ApplicationFailure;
 import io.temporal.activity.Activity;
 import io.temporal.activity.ActivityExecutionContext;
 import io.temporal.activity.ActivityInfo;
@@ -25,7 +26,7 @@ public class GreetActivityImpl implements GreetActivity {
       log.info("activityTimeout=" + info.getStartToCloseTimeout());
 
       if (Faker.chance(0.75)) {
-        throw new RuntimeException("Failed to greet");
+        throw ApplicationFailure.newFailure("Failed to greet", RuntimeException.class.getName());
       }
 
       return "Hello " + name;
