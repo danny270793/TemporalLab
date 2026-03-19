@@ -6,7 +6,7 @@ import io.temporal.worker.Worker;
 import io.temporal.worker.WorkerFactory;
 
 import helloworkflow.workflows.implementations.SayHelloWorkflowImpl;
-import helloworkflow.actitivies.implementations.GreetActivitiesImpl;
+import helloworkflow.actitivies.implementations.GreetActivityImpl;
 
 /**
  * Worker to execute the say hello workflow.
@@ -19,7 +19,7 @@ public class SayHelloWorker {
 
       Worker worker = factory.newWorker("my-task-queue");
       worker.registerWorkflowImplementationTypes(SayHelloWorkflowImpl.class);
-      worker.registerActivitiesImplementations(new GreetActivitiesImpl());
+      worker.registerActivitiesImplementations(new GreetActivityImpl());
 
       System.out.println("Starting SayHelloWorker for task queue 'my-task-queue'...");
 
