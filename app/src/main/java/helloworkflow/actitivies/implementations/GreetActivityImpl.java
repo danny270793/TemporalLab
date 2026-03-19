@@ -15,7 +15,7 @@ public class GreetActivityImpl implements GreetActivity {
     private static final Logger log = LoggerFactory.getLogger(GreetActivityImpl.class);
 
     @Override
-    public String greet(String name) {
+    public String greet(String language, String name) {
       final ActivityExecutionContext ctx = Activity.getExecutionContext();
       final ActivityInfo info = ctx.getInfo();
 
@@ -25,10 +25,26 @@ public class GreetActivityImpl implements GreetActivity {
       log.info("activityId=" + info.getActivityId());
       log.info("activityTimeout=" + info.getStartToCloseTimeout());
 
-      if (Faker.chance(0.75)) {
-        throw ApplicationFailure.newFailure("Failed to greet", RuntimeException.class.getName());
-      }
+      // if (Faker.chance(0.5)) {
+      //   throw ApplicationFailure.newFailure("Failed to greet", RuntimeException.class.getName());
+      // }
 
-      return "Hello " + name;
+      if("Spanish".equals(language)) {
+        return "Hola " + name;
+      } else if("French".equals(language)) {
+        return "Bonjour " + name;
+      } else if("German".equals(language)) {
+        return "Hallo " + name;
+      } else if("Italian".equals(language)) {
+        return "Ciao " + name;
+      } else if("Portuguese".equals(language)) {
+        return "Olá " + name;
+      } else if("Russian".equals(language)) {
+        return "Привет " + name;
+      } else if("English".equals(language)) {
+        return "Hello " + name;
+      } else {
+        return "xxxxxx " + name;
+      }
     }
 }
