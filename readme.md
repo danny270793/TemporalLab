@@ -59,3 +59,9 @@ run the worker
 ```bash
 ./gradlew runWorker
 ```
+
+run the starter
+
+```bash
+./gradlew runStarter
+```
