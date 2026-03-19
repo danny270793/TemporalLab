@@ -5,6 +5,7 @@ import helloworkflow.actitivies.interfaces.AskActivity;
 import helloworkflow.workflows.interfaces.SayHelloWorkflow;
 import io.temporal.activity.ActivityOptions;
 import io.temporal.workflow.Workflow;
+import io.temporal.workflow.QueryMethod;
 
 import java.time.Duration;
 
@@ -12,6 +13,7 @@ import java.time.Duration;
  * Implementation of the say hello workflow.
  */
 public class SayHelloWorkflowImpl implements SayHelloWorkflow {
+    private String language = null;
     private final AskActivity askActivity = Workflow.newActivityStub(
         AskActivity.class,
         ActivityOptions.newBuilder()
@@ -28,7 +30,23 @@ public class SayHelloWorkflowImpl implements SayHelloWorkflow {
 
     @Override
     public String sayHello(String name) {
-      final String response = askActivity.ask();
-      return greetActivity.greet(response);
+        final String response = askActivity.ask();
+        Workflow.await(() -> language != null);
+        return greetActivity.greet(language, response);
+    }
+
+    @Override
+    public void setLanguage(String language) {
+      this.language = language;
+    }
+
+    @Override
+    public boolean hasLanguage() {
+      return language != null;
+    }
+
+    @Override
+    public String getLanguage() {
+      return language;
     }
 }

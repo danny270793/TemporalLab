@@ -25,9 +25,9 @@ public class AskActivityImpl implements AskActivity {
       log.info("activityId=" + info.getActivityId());
       log.info("activityTimeout=" + info.getStartToCloseTimeout());
 
-      if (Faker.chance(0.75)) {
-        throw ApplicationFailure.newFailure("Failed to ask", RuntimeException.class.getName());
-      }
+      // if (Faker.chance(0.5)) {
+      //   throw ApplicationFailure.newFailure("Failed to ask", RuntimeException.class.getName());
+      // }
       
       return "Danny";
     }
