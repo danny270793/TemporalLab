@@ -17,5 +17,8 @@ public interface SayHelloWorkflow {
     void setLanguage(String language);
 
     @QueryMethod
-    boolean hasObtainedTheName();
+    boolean hasLanguage();
+
+    @QueryMethod
+    String getLanguage();
 }
