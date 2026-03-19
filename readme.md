@@ -53,3 +53,9 @@ run temporal server locally
 ```bash
 temporal server start-dev --ui-port 8090
 ```
+
+run the worker
+
+```bash
+./gradlew runWorker
+```
