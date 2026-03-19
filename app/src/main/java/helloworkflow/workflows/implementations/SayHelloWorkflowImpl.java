@@ -13,6 +13,7 @@ import java.time.Duration;
  * Implementation of the say hello workflow.
  */
 public class SayHelloWorkflowImpl implements SayHelloWorkflow {
+    private String language = null;
     private boolean hasObtainedTheName = false;
     private final AskActivity askActivity = Workflow.newActivityStub(
         AskActivity.class,
@@ -30,9 +31,15 @@ public class SayHelloWorkflowImpl implements SayHelloWorkflow {
 
     @Override
     public String sayHello(String name) {
-      final String response = askActivity.ask();
-      hasObtainedTheName = true;
-      return greetActivity.greet(response);
+        final String response = askActivity.ask();
+        hasObtainedTheName = true;
+        Workflow.await(() -> language != null);
+        return greetActivity.greet(language, response);
+    }
+
+    @Override
+    public void setLanguage(String language) {
+      this.language = language;
     }
 
     @Override
