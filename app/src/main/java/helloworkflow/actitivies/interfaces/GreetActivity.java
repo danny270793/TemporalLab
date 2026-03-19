@@ -9,5 +9,5 @@ import io.temporal.activity.ActivityMethod;
 @ActivityInterface
 public interface GreetActivity {
     @ActivityMethod
-    String greet(String name);
+    String greet(String language, String name);
 }
