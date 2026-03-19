@@ -7,6 +7,9 @@ import io.temporal.workflow.Workflow;
 
 import java.time.Duration;
 
+/**
+ * Implementation of the say hello workflow.
+ */
 public class SayHelloWorkflowImpl implements SayHelloWorkflow {
     private final GreetActivities activities = Workflow.newActivityStub(
         GreetActivities.class,
