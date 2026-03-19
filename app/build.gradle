@@ -45,3 +45,10 @@ tasks.register('runWorker', JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'helloworkflow.workers.SayHelloWorker'
 }
+
+tasks.register('runStarter', JavaExec) {
+    group = 'application'
+    description = 'Run the workflow starter'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'helloworkflow.Starter'
+}
