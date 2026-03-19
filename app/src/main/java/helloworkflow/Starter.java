@@ -30,7 +30,11 @@ public class Starter {
             try {
                 Thread.sleep(10_000);
                 logger.info("Sending setLanguage signal");
-                workflow.setLanguage("English");
+                if(!workflow.hasLanguage()) {
+                    workflow.setLanguage("English");
+                } else {
+                    logger.info("Language already set to {}", workflow.getLanguage());
+                }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 throw new RuntimeException(e);
