@@ -24,6 +24,9 @@ dependencies {
 
     implementation 'io.temporal:temporal-sdk:1.24.1'
     testImplementation 'io.temporal:temporal-testing:1.24.1'
+
+    // Logging
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
